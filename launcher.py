@@ -6,15 +6,16 @@ class Launcher:
 
     def __init__(self):
         self.current_path = os.getcwd()
+        # print self.current_path
 
     def launch_roscore(self):
-        subprocess.Popen(['bash ' + self.current_path + '/start_roscore.bash'],shell=True)
+        subprocess.Popen(['bash /home/nano/robot_web_service/start_roscore.bash'],shell=True)
 
     def kill_roscore(self):
         subprocess.call(['pkill', '-f', 'roscore'])
 
     def roslauncher(self):
-        subprocess.Popen(['bash ' + self.current_path + '/start_roslauch.bash'],shell=True)
+        subprocess.Popen(['bash /home/nano/robot_web_service/start_roslauch.bash'],shell=True)
 
     def kill_roslaunch(self):
         subprocess.call(['pkill', '-f', 'sample_nodelet_all.launch'])
