@@ -19,8 +19,7 @@ class RobotWeb(object):
 
     @cherrypy.expose
     def index(self):
-        return "Hello! We are Virtuoso Robotics!"
-
+        return open('home.html')
     @cherrypy.expose
     def start_roscore(self):
         self.laucher.launch_roscore()
@@ -32,14 +31,24 @@ class RobotWeb(object):
         return 'kill roscore'
 
     @cherrypy.expose
-    def start_realsense(self):
-        self.laucher.launch_realsense()
-        return 'start realsense'
+    def start_carto_3d(self):
+        self.laucher.launch_carto_3d()
+        return 'start catographer 3D SLAM'
 
     @cherrypy.expose
-    def kill_realsense(self):
-        self.laucher.kill_realsense()
-        return 'kill realsense'
+    def kill_carto_3d(self):
+        self.laucher.kill_carto_3d()
+        return 'kill catographer 3D SLAM'
+
+    @cherrypy.expose
+    def start_carto_3d_vo(self):
+        self.laucher.launch_carto_3d_vo()
+        return 'start catographer 3D SLAM with VO'
+
+    @cherrypy.expose
+    def kill_carto_3d_vo(self):
+        self.laucher.kill_carto_3d_vo()
+        return 'kill catographer 3D SLAM with VO'
 
 if __name__ == "__main__":
     cherrypy.quickstart(RobotWeb(), '/',config)
