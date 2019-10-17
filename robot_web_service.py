@@ -32,14 +32,14 @@ class RobotWeb(object):
         return 'kill roscore'
 
     @cherrypy.expose
-    def start_roslaunch(self):
-        self.laucher.roslauncher()
-        return 'start roslaunch'
+    def start_realsense(self):
+        self.laucher.launch_realsense()
+        return 'start realsense'
 
     @cherrypy.expose
-    def kill_roslaunch(self):
-        self.laucher.kill_roslaunch()
-        return 'kill roslaunch'
+    def kill_realsense(self):
+        self.laucher.kill_realsense()
+        return 'kill realsense'
 
 if __name__ == "__main__":
     cherrypy.quickstart(RobotWeb(), '/',config)
