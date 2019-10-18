@@ -14,17 +14,11 @@ class Launcher:
     def kill_roscore(self):
         subprocess.call(['pkill', '-f', 'roscore'])
 
-    def roslauncher(self):
-        subprocess.Popen(['bash /home/nano/robot_web_service/start_roslauch.bash'],shell=True)
-
-    def kill_roslaunch(self):
-        subprocess.call(['pkill', '-f', 'sample_nodelet_all.launch'])
-
     def launch_realsense(self):
         subprocess.Popen(['bash /home/nano/robot_web_service/start_realsense.bash'],shell=True)
 
     def kill_realsense(self):
-        subprocess.call(['pkill', '-f', 'rs_t265.launch'])
+        subprocess.call(['pkill', '-f', 'virtuoso_vo.launch'])
 
 
 if __name__ == "__main__":
