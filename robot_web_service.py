@@ -41,6 +41,16 @@ class RobotWeb(object):
         self.laucher.kill_realsense()
         return 'kill realsense'
 
+    @cherrypy.expose
+    def start_realsense_tf(self):
+        self.laucher.launch_realsense_tf()
+        return 'start realsense tf'
+
+    @cherrypy.expose
+    def kill_realsense_tf(self):
+        self.laucher.kill_realsense_tf()
+        return 'kill realsense tf'
+
 if __name__ == "__main__":
     cherrypy.quickstart(RobotWeb(), '/',config)
 

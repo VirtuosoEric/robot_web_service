@@ -20,6 +20,11 @@ class Launcher:
     def kill_realsense(self):
         subprocess.call(['pkill', '-f', 'virtuoso_vo.launch'])
 
+    def launch_realsense_tf(self):
+        subprocess.Popen(['bash /home/nano/robot_web_service/start_realsense_tf.bash'],shell=True)
+
+    def kill_realsense_tf(self):
+        subprocess.call(['pkill', '-f', 'rs_t265.launch'])
 
 if __name__ == "__main__":
     laucher = Launcher()
