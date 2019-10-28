@@ -10,19 +10,19 @@ class Launcher:
         # print self.current_path
 
     def launch_roscore(self):
-        subprocess.Popen(['bash /home/pn60/robot_web_service/start_roscore.bash'],shell=True)
+        subprocess.Popen(['bash /home/pn60/robot_web_service/bash_script/start_roscore.bash'],shell=True)
 
     def kill_roscore(self):
         subprocess.call(['pkill', '-f', 'roscore'])
 
     def launch_carto_3d(self):
-        subprocess.Popen(['bash /home/pn60/robot_web_service/start_carto_3d.bash'],shell=True)
+        subprocess.Popen(['bash /home/pn60/robot_web_service/bash_script/start_carto_3d.bash'],shell=True)
 
     def kill_carto_3d(self):
         subprocess.call(['pkill', '-f', 'slam_test.launch'])
 
     def launch_carto_3d_vo(self):
-        subprocess.Popen(['bash /home/pn60/robot_web_service/start_carto_3d_vo.bash'],shell=True)
+        subprocess.Popen(['bash /home/pn60/robot_web_service/bash_script/start_carto_3d_vo.bash'],shell=True)
         time.sleep(1)
         s = requests.Session()
         r = s.get('http://192.168.31.160:8080/start_realsense')
@@ -33,6 +33,34 @@ class Launcher:
         time.sleep(1)
         s = requests.Session()
         r = s.get('http://192.168.31.160:8080/kill_realsense')
+        print r.text
+
+    def launch_gmapping_vo(self):
+        subprocess.Popen(['bash /home/pn60/robot_web_service/bash_script/start_gmapping_vo.bash'],shell=True)
+        time.sleep(1)
+        s = requests.Session()
+        r = s.get('http://192.168.31.160:8080/start_realsense_tf')
+        print r.text
+
+    def kill_gmapping_vo(self):
+        subprocess.call(['pkill', '-f', 'gmapping_vo.launch'])
+        time.sleep(1)
+        s = requests.Session()
+        r = s.get('http://192.168.31.160:8080/kill_realsense_tf')
+        print r.text
+
+    def launch_amcl_vo(self):
+        subprocess.Popen(['bash /home/pn60/robot_web_service/bash_script/start_amcl_vo.bash'],shell=True)
+        time.sleep(1)
+        s = requests.Session()
+        r = s.get('http://192.168.31.160:8080/start_realsense_tf')
+        print r.text
+
+    def kill_amcl_vo(self):
+        subprocess.call(['pkill', '-f', 'amcl_vo.launch'])
+        time.sleep(1)
+        s = requests.Session()
+        r = s.get('http://192.168.31.160:8080/kill_realsense_tf')
         print r.text
 
 
